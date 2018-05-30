@@ -7,11 +7,11 @@
 		<title>reveal.js</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+		<link rel="stylesheet" href="css/theme/simple.css">
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
-
+		<link rel="stylesheet" href="main.css">
 		<!-- Printing and PDF exports -->
 		<script>
 			var link = document.createElement( 'link' );
@@ -24,8 +24,46 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section>
+					<img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Vue.js_Logo.svg" alt="vue-logo">
+					<h1>Vue.js</h1>
+				</section>
+				<section>
+					<h3>Czym jest Vue?</h3>
+					<ul>
+						<li>Framework JS</li>
+						<li><b>Data utworzenia</b>: Luty 2014</li>
+						<li><b>Twórca</b>: </li>
+					</ul>
+					<img src="static/vueTeam.png" alt="vue-creator">
+				</section>
+				<section>
+					<h3>Dlaczego Vue?</h3>
+				</section>
+				<section>
+					<h3>Rozmiar ma znaczenie</h3>
+				</section>
+				<section>
+					<table>
+						<tr>
+							<th>Framework</th>
+							<th>Rozmiar zminifikowanej paczki produkcyjnej</th>
+						</tr>
+						<tr>
+							<td>React 16.2.0 + React DOM</td>
+							<td>97.5K</td>
+						</tr>
+						<tr>
+							<td>Angular 2</td>
+							<td>566K</td>
+						</tr>
+						<tr class = "emphasis">
+							<td>Vue 2.4.2</td>
+							<td>58.8K</td>
+						</tr>
+					</table>
+					<a class="src" href="https://gist.github.com/Restuta/cda69e50a853aa64912d">https://gist.github.com/Restuta/cda69e50a853aa64912d</a>
+				</section>
 			</div>
 		</div>
 
@@ -42,8 +80,10 @@
 					{ src: 'plugin/markdown/markdown.js' },
 					{ src: 'plugin/notes/notes.js', async: true },
 					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
-				]
-			});
+				],
+              keyboard: true,
+
+            });
 		</script>
 	</body>
 </html>
