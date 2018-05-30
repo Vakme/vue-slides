@@ -3,9 +3,7 @@ tr.emphasis {
 }
 
 .slides {
-    background-image: url("static/5300621bbabf3_p.jpg");
-    background-position: top right;
-    background-repeat: no-repeat;
+    background: url("static/5300621bbabf3_p.jpg") no-repeat 100% 0;
     background-size: 50px auto;
 }
 

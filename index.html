@@ -11,6 +11,8 @@
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<link rel="stylesheet" type="text/css" href="lib/css/asciinema-player.css" />
 		<link rel="stylesheet" href="main.css">
 		<!-- Printing and PDF exports -->
 		<script>
@@ -20,6 +22,7 @@
 			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
+		<script src="https://unpkg.com/vue"></script>
 	</head>
 	<body>
 		<div class="reveal">
@@ -104,12 +107,47 @@
 						<li>TypeScript</li>
 					</ul>
 				</section>
+				<section>
+					<h2>Jak zacząć?</h2>
+				</section>
+				<section data-trim data-noescape>
+					<h3>Tak, jak z jQuery!</h3>
+					<pre><code class="html">
+<script src="https://unpkg.com/vue"></script>
+<div id="app">
+  <p>{{ message }}</p>
+</div>
+					</code></pre>
+					<pre><code class="vue">
+new Vue({
+  el: '#app',
+  data: {
+    message: 'Hello Vue.js!'
+  }
+})
+					</code></pre>
+					<div id="app2">
+						<p>{{ message }}</p>
+					</div>
+					<script>
+                      new Vue({
+                        el: '#app2',
+                        data: {
+                          message: 'Output: Hello Vue.js!'
+                        }
+                      })
+					</script>
+				</section>
+				<section>
+					<h3>Vue CLI</h3>
+					<asciinema-player src="static/184548.cast" cols="120" rows="15" poster="npt:0:21" font-size="big" speed="2" autoplay="true"></asciinema-player>
+				</section>
 			</div>
 		</div>
 
 		<script src="lib/js/head.min.js"></script>
 		<script src="js/reveal.js"></script>
-
+		<script src="lib/js/asciinema-player.js"></script>
 		<script>
 			// More info about config & dependencies:
 			// - https://github.com/hakimel/reveal.js#configuration
@@ -122,7 +160,6 @@
 					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
 				],
               keyboard: true
-
             });
 		</script>
 	</body>
