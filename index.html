@@ -140,7 +140,171 @@ new Vue({
 				</section>
 				<section>
 					<h3>Vue CLI</h3>
-					<asciinema-player src="static/184548.cast" cols="120" rows="15" poster="npt:0:21" font-size="big" speed="2" autoplay="true"></asciinema-player>
+					<asciinema-player src="static/184548.cast" cols="120" rows="15" poster="npt:0:21" font-size="big" speed="2"></asciinema-player>
+				</section>
+				<section>
+					<h2>Co można zrobić?</h2>
+				</section>
+				<section>
+					<h3>Wiązanie atrybutów</h3>
+					<pre><code class="html">
+<div id="bind">
+ <a :href="link" target="_blank">To jest link</a>
+</div>
+					</code></pre>
+					<pre><code class="vue">
+new Vue({
+  el: '#bind',
+  data: {
+    link: 'http://agh.edu.pl'
+  }
+})
+					</code></pre>
+
+					<div id="bind2">
+						<a :href="link" target="_blank">To jest link</a>
+					</div>
+					<script>
+                      new Vue({
+                        el: '#bind2',
+                        data: {
+                          link: 'http://agh.edu.pl'
+                        }
+                      })
+					</script>
+				</section>
+
+				<section>
+					<h3>Wiązanie zdarzeń</h3>
+					<pre><code class="html"><div id="bind-events">
+	<button @click="showAlert">Kliknij tutaj</button>
+</div>					</code></pre>
+					<pre><code class="vue">new Vue({
+	el: '#bind-events',
+    	data: {
+		message: 'To zostanie wyświetlone jako alert'
+		},
+        methods: {
+           showAlert: function () {
+        	 alert(this.message);
+        }
+    }
+})					</code></pre>
+
+					<div id="bind-events2">
+						<button @click="showAlert">Kliknij tutaj</button>
+					</div>
+					<script>
+                      new Vue({
+                        el: '#bind-events2',
+                        data: {
+                          message: 'To zostanie wyświetlone jako alert'
+                        },
+                        methods: {
+                          showAlert: function () {
+                            alert(this.message);
+                          }
+                        }
+                      })
+					</script>
+				</section>
+				<section>
+					<h3>Instrukcje warunkowe</h3>
+					<pre><code class="html"><div id="cond">
+	<button @click="showMsg">Kliknij tutaj</button>
+	<div v-if="show"></div>
+</div>					</code></pre>
+					<pre><code class="vue">new Vue({
+	el: '#cond',
+    	data: {
+		message: 'Widać mnie?',
+		show: false
+		},
+        methods: {
+        showMsg: function () {
+        	this.show = !this.show;
+        }
+    }
+})					</code></pre>
+
+					<div id="cond2">
+						<button @click="showMsg">Kliknij tutaj</button>
+						<div v-if="show">{{ message }}</div>
+					</div>
+					<script>
+                      new Vue({
+                        el: '#cond2',
+                        data: {
+                          message: 'Omnomnom',
+                          show: false
+                        },
+                        methods: {
+                          showMsg: function () {
+                            this.show = !this.show;
+                          }
+                        }
+                      })
+					</script>
+				</section>
+				<section>
+					<h3>Pętle</h3>
+					<pre><code class="html"><div id="loop">
+	<span v-for="option in options" @click="pickFood(option)"> {{ option }} </span>
+</div>					</code></pre>
+					<pre><code class="vue">new Vue({
+	el: '#loop',
+      data: {
+		  options: ['Pizza', 'Kebab', 'Sushi', 'Bibimbap']
+	  },
+      methods: {
+        pickFood: function (option) {
+          alert('Jemy: ' + option);
+	  }
+    }
+})					</code></pre>
+
+					<div id="loop2">
+						Kliknij: <span v-for="option in options" @click="pickFood(option)"> {{ option }} </span>
+					</div>
+					<script>
+                      new Vue({
+                        el: '#loop2',
+                        data: {
+                          options: ['Pizza', 'Kebab', 'Sushi', 'Bibimbap']
+                        },
+                        methods: {
+                          pickFood: function (option) {
+                            alert('Jemy: ' + option);
+                          }
+                        }
+                      })
+					</script>
+				</section>
+				<section>
+					<h3>Reaktywność</h3>
+					<pre><code class="html"><div id="model">
+  <p>Moja nazwa dania: {{ meal }}</p>
+  <input type="text" v-model="meal">
+</div>					</code></pre>
+					<pre><code class="vue">new Vue({
+el: '#model',
+  data: {
+    meal: ''
+  }
+})					</code></pre>
+
+					<div id="model2">
+						<p>Moja nazwa dania: {{ meal }}</p>
+						<input type="text" v-model="meal">
+					</div>
+					<script>
+                      new Vue({
+                        el: '#model2',
+                        data: {
+                          meal: ''
+                        }
+                      })
+					</script>
 				</section>
 			</div>
 		</div>
