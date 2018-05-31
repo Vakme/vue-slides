@@ -306,6 +306,48 @@ el: '#model',
                       })
 					</script>
 				</section>
+				<section>
+					<h3>Okiem psuja: properties</h3>
+					<pre><code class="vue">new Vue({
+  el: '#breaker1',
+  computed: {
+    now: function() {
+      return Date.now()
+    }
+  },
+  methods: {
+    realNow: function() {
+      return Date.now()
+    }
+  }
+})					</code></pre>
+					<div id="breaker1">
+						<p>Teraz jest: {{ now }}</p>
+						<button @click="showNow">Możesz powtórzyć?</button>
+						<button @click="showRealNow">Ale NAPRAWDĘ teraz?</button>
+					</div>
+					<script>
+						new Vue({
+						 	 el: '#breaker1',
+						 	 computed: {
+						 		  now: function() {
+						 				 return Date.now()
+						 		  }
+						 	 },
+						 	 methods: {
+						 		  realNow: function() {
+						 				 return Date.now()
+						 		  },
+						 			showNow: function () {
+						 				 alert("Ok, powtórzę: " + this.now);
+						 			},
+						 			showRealNow: function () {
+						 				 alert("Ok, powtórzę: " + this.realNow());
+						 			}
+						 	 }
+						})
+					</script>
+				</section>
 			</div>
 		</div>
 
