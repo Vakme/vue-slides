@@ -306,8 +306,72 @@ el: '#model',
                       })
 					</script>
 				</section>
+
 				<section>
-					<h3>Okiem psuja: computed properties</h3>
+					<h3>Komponenty</h3>
+					<div class="row"> <div class="column">
+					<pre><code class="html"><div id="components">
+  <ul>
+    <resto
+			v-for="item in places"
+			v-bind:place="item"
+			v-bind:key="item.id">
+    </resto>
+  </ul>
+</div></code></pre>
+					<pre><code class="vue">Vue.component('resto', {
+  props: ['place'],
+  template: '<li>{{ place.text }}</li>'
+})
+
+new Vue({
+  el: '#components',
+  data: {
+    places: [
+      { id: 0, text: 'Kebab' },
+      { id: 1, text: 'Pizza' },
+      { id: 2, text: 'Sushi' }
+    ]
+  }
+})</code></pre></div>
+						<div id="components2">
+							<ul>
+								<resto
+										v-for="item in places"
+										v-bind:place="item"
+										v-bind:key="item.id">
+								</resto>
+							</ul>
+						</div>
+					<script>
+                      Vue.component('resto', {
+                        props: ['place'],
+                        template: '<li>{{ place.text }}</li>'
+                      })
+
+                      new Vue({
+                        el: '#components2',
+                        data: {
+                          places: [
+                            { id: 0, text: 'Kebab' },
+                            { id: 1, text: 'Pizza' },
+                            { id: 2, text: 'Sushi' }
+                          ]
+                        }
+                      })
+					</script>
+					</div>
+				</section>
+				<section>
+					<h3>Komponenty</h3>
+					<img src="static/Automaty.png" alt="components">
+				</section>
+
+				<section>
+					<h2>Okiem psuja</h2>
+				</section>
+				<section>
+					<h3>Computed properties</h3>
 					<pre><code class="vue">const br1 = new Vue({
   el: '#breaker1',
   computed: {
@@ -349,7 +413,7 @@ el: '#model',
 					</script>
 				</section>
 				<section>
-					<h3>Okiem psuja: properties</h3>
+					<h3>Properties</h3>
 					<pre><code class="vue">const br2 = new Vue({
   el: '#breaker2',
   data: {
@@ -417,7 +481,7 @@ Vue.set(br2.user2, 'passwd', '141592');</code></pre>
 					</script>
 				</section>
 				<section>
-					<h3>Okiem psuja: tablice</h3>
+					<h3>Tablice</h3>
 					<pre><code class="vue">addSushi: function() {
   this.options.push({ name: 'suszi', from: 'Japan' })
 },
@@ -479,6 +543,60 @@ correctBibimbap: function() {
 						 	 }
 						})
 					</script>
+				</section>
+				<section>
+					<h2>Dodatki</h2>
+				</section>
+				<section>
+					<h3>Vue Router</h3>
+					<pre><code class="html"><div id="app-router">
+  <p>
+    <router-link to="/resto">Restauracje</router-link>
+    <router-link to="/food">Jedzenie</router-link>
+  </p>
+  <router-view></router-view>
+</div></code></pre>
+					<pre><code class="vue">const Resto = { template: '<div>Resto</div>' }
+const Food = { template: '<div>Food</div>' }
+const routes = [
+  { path: '/resto', component: Resto },
+  { path: '/food', component: Food }
+]
+const router = new VueRouter({
+  routes
+})
+const app = new Vue({
+  router
+}).$mount('#app-router')</code></pre>
+				</section>
+				<section>
+					<h3>Vuex</h3>
+					<p>State Management Pattern</p>
+					<pre><code class="vue">const store = new Vuex.Store({
+  state: {
+    name: ''
+  },
+  mutations: {
+    setName (state, name) {
+      state.name = name;
+    }
+  }
+})					</code></pre>
+				</section>
+				<section>
+					<h3>Vue Devtools</h3>
+					<img src="static/devtools.png" alt="devtools">
+				</section>
+				<section>
+					<h3>Komponenty UI</h3>
+					<ul>
+						<li><a href="https://www.iviewui.com/components/alert-en" target="_blank">iView</a></li>
+						<li><a href="https://vuetifyjs.com/en/components/snackbars" target="_blank">Vuetify</a></li>
+						<li><a href="https://vuematerial.io/components/button/" target="_blank">Vue Material</a></li>
+						<li><a href="https://quasar-framework.org/">Quasar</a></li>
+						<li><a href="https://bootstrap-vue.js.org/" target="_blank">Bootstrap Vue</a></li>
+						<li><a href="https://blog.bitsrc.io/11-vue-js-component-libraries-you-should-know-in-2018-3d35ad0ae37f" target="_blank">I wiele więcej...fit</a></li>
+					</ul>
 				</section>
 			</div>
 		</div>
