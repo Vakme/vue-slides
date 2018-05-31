@@ -308,7 +308,7 @@ el: '#model',
 				</section>
 				<section>
 					<h3>Okiem psuja: computed properties</h3>
-					<pre><code class="vue">new Vue({
+					<pre><code class="vue">const br1 = new Vue({
   el: '#breaker1',
   computed: {
     now: function() {
@@ -327,7 +327,7 @@ el: '#model',
 						<button @click="showRealNow">Ale NAPRAWDĘ teraz?</button>
 					</div>
 					<script>
-						new Vue({
+						const br1 = new Vue({
 						 	 el: '#breaker1',
 						 	 computed: {
 						 		  now: function() {
@@ -350,7 +350,7 @@ el: '#model',
 				</section>
 				<section>
 					<h3>Okiem psuja: properties</h3>
-					<pre><code class="vue">const vm = new Vue({
+					<pre><code class="vue">const br2 = new Vue({
   el: '#breaker2',
   data: {
     user1: {
@@ -361,9 +361,9 @@ el: '#model',
     }
   }
 });
-vm.admin = { name: 'DDay', passwd: '123456' };
-vm.user1.passwd = '141592';
-Vue.set(vm.user2, 'passwd', '141592');</code></pre>
+br2.admin = { name: 'DDay', passwd: '123456' };
+br2.user1.passwd = '141592';
+Vue.set(br2.user2, 'passwd', '141592');</code></pre>
 					<div id="breaker2">
 						<table style='font-size:50%'>
 							<tr>
@@ -384,7 +384,7 @@ Vue.set(vm.user2, 'passwd', '141592');</code></pre>
 						</table>
 					</div>
 					<script>
-						const vm = new Vue({
+						const br2 = new Vue({
 							 el: '#breaker2',
 							 data: {
 									user1: {
@@ -411,9 +411,73 @@ Vue.set(vm.user2, 'passwd', '141592');</code></pre>
 								 }
 							 }
 						});
-						vm.admin = { name: 'DDay', passwd: '@@@@@@', passwd: '141592' };
-						vm.user1.passwd = '141592';
-						Vue.set(vm.user2, 'passwd', '141592');
+						br2.admin = { name: 'DDay', passwd: '@@@@@@', passwd: '141592' };
+						br2.user1.passwd = '141592';
+						Vue.set(br2.user2, 'passwd', '141592');
+					</script>
+				</section>
+				<section>
+					<h3>Okiem psuja: tablice</h3>
+					<pre><code class="vue">addSushi: function() {
+  this.options.push({ name: 'suszi', from: 'Japan' })
+},
+correctSushi: function() {
+  this.options[1].name = 'sushi'
+},
+maybeBibimbap: function() {
+  this.options[1] = { name: 'bimbap', from: 'Korea' }
+},
+readdBibimbap: function() {
+  Vue.set(this.options, 1, { name: 'bimbap', from: 'Korea' })
+},
+correctBibimbap: function() {
+  this.options[1].name = 'bibimbap'
+}				</code></pre>
+					<div id="breaker3">
+						<ul>
+							 <li v-for="option in options">
+								 {{ option.name }} from {{ option.from }}
+							 </li>
+						</ul>
+						<br/>
+						<button @click="addSushi" v-if="!hasSushi">Co z sushi?</button>
+						<button @click="correctSushi" v-if="hasSushi && !hasBibimbap">Literówka...</button>
+						<button @click="maybeBibimbap" v-if="hasSushi && !hasBibimbap">Może jednak bibimbap?</button>
+						<button @click="correctBibimbap" v-if="hasBibimbap">Dwa bi, nie jedno.</button>
+						<button @click="readdBibimbap" v-if="hasBibimbap && !okBibim">Może jeszcze raz...</button>
+					</div>
+					<script>
+						const br3 = new Vue({
+						 	 el: '#breaker3',
+							 data: {
+								 hasSushi: false,
+								 hasBibimbap: false,
+								 okBibim: false,
+							   options: [
+								   { name: 'pizza', from: 'Italy' }
+								 ]
+							 },
+						 	 methods: {
+								 addSushi: function() {
+									 this.hasSushi = true
+									 this.options.push({ name: 'suszi', from: 'Japan' })
+								 },
+								 correctSushi: function() {
+									 this.options[1].name = 'sushi'
+								 },
+								 maybeBibimbap: function() {
+									 this.hasBibimbap = true
+									 this.options[1] = { name: 'bimbap', from: 'Korea' }
+								 },
+								 correctBibimbap: function() {
+									 this.options[1].name = 'bibimbap'
+								 },
+								 readdBibimbap: function() {
+									 this.okBibim = true
+									 Vue.set(this.options, 1, { name: 'bimbap', from: 'Korea' })
+								 }
+						 	 }
+						})
 					</script>
 				</section>
 			</div>
