@@ -307,7 +307,7 @@ el: '#model',
 					</script>
 				</section>
 				<section>
-					<h3>Okiem psuja: properties</h3>
+					<h3>Okiem psuja: computed properties</h3>
 					<pre><code class="vue">new Vue({
   el: '#breaker1',
   computed: {
@@ -346,6 +346,74 @@ el: '#model',
 						 			}
 						 	 }
 						})
+					</script>
+				</section>
+				<section>
+					<h3>Okiem psuja: properties</h3>
+					<pre><code class="vue">const vm = new Vue({
+  el: '#breaker2',
+  data: {
+    user1: {
+      name: 'SRiR'
+    },
+    user2: {
+      name: 'ZTI'
+    }
+  }
+});
+vm.admin = { name: 'DDay', passwd: '123456' };
+vm.user1.passwd = '141592';
+Vue.set(vm.user2, 'passwd', '141592');</code></pre>
+					<div id="breaker2">
+						<table style='font-size:50%'>
+							<tr>
+								<td>{{ user1.passwd }}</td>
+						    <td><button @click="resetUser1">reset hasła</button></td>
+								<td style="vertical-align: middle; border: 0px; border-left: 1px solid" rowspan=3>
+									<button @click="startAgain">powrót</button>
+								</td>
+							</tr>
+							<tr>
+								<td>{{ user2.passwd }}</td>
+						    <td><button @click="resetUser2">reset hasła</button></td>
+							</tr>
+							<tr>
+								<td>{{ admin.passwd }}</td>
+						    <td><button @click="resetAdmin">reset hasła</button></td>
+							</tr>
+						</table>
+					</div>
+					<script>
+						const vm = new Vue({
+							 el: '#breaker2',
+							 data: {
+									user1: {
+										 name: 'SRiR'
+									},
+									user2: {
+										 name: 'ZTI'
+									}
+							 },
+							 methods: {
+								 resetUser1: function() {
+									 this.user1.passwd = '000000'
+								 },
+								 resetUser2: function() {
+									 this.user2.passwd = '000000'
+								 },
+								 resetAdmin: function() {
+									 this.admin.passwd = '000000'
+								 },
+								 startAgain: function() {
+									 this.user1.passwd = '141592'
+									 this.user2.passwd = '141592'
+									 this.admin.passwd = '141592'
+								 }
+							 }
+						});
+						vm.admin = { name: 'DDay', passwd: '@@@@@@', passwd: '141592' };
+						vm.user1.passwd = '141592';
+						Vue.set(vm.user2, 'passwd', '141592');
 					</script>
 				</section>
 			</div>
