@@ -22,3 +22,8 @@ section .src:before {
     justify-content: space-evenly;
     align-items: center;
 }
+
+.image-small {
+    width: 25%;
+    height: auto;
+}
