@@ -13,7 +13,10 @@
 		<link rel="stylesheet" href="lib/css/zenburn.css">
 
 		<link rel="stylesheet" type="text/css" href="lib/css/asciinema-player.css" />
-		<link rel="stylesheet" href="main.css">
+
+        <link href="https://fonts.googleapis.com/css?family=Merriweather:400,700&amp;subset=latin-ext" rel="stylesheet">
+
+        <link rel="stylesheet" href="main.css">
 		<!-- Printing and PDF exports -->
 		<script>
 			var link = document.createElement( 'link' );
@@ -139,14 +142,14 @@ new Vue({
 				<section>
 					<h2>Co można zrobić?</h2>
 				</section>
-				<section>
+				<section data-trim data-noescape>
 					<h3>Wiązanie atrybutów</h3>
 					<pre><code class="html">
 <div id="bind">
  <a :href="link" target="_blank">To jest link</a>
 </div>
 					</code></pre>
-					<pre><code class="vue">
+					<pre><code class="vue" data-trim data-noescape>>
 new Vue({
   el: '#bind',
   data: {
@@ -170,18 +173,18 @@ new Vue({
 
 				<section>
 					<h3>Wiązanie zdarzeń</h3>
-					<pre><code class="html"><div id="bind-events">
+					<pre><code class="html" data-trim><div id="bind-events">
 	<button @click="showAlert">Kliknij tutaj</button>
 </div>					</code></pre>
-					<pre><code class="vue">new Vue({
-	el: '#bind-events',
-    	data: {
-		message: 'To zostanie wyświetlone jako alert'
-		},
-        methods: {
-           showAlert: function () {
-        	 alert(this.message);
-        }
+					<pre><code class="vue" data-trim>new Vue({
+  el: '#bind-events',
+    data: {
+	  message: 'To zostanie wyświetlone jako alert'
+	},
+    methods: {
+      showAlert: function () {
+        alert(this.message);
+      }
     }
 })					</code></pre>
 
@@ -204,20 +207,20 @@ new Vue({
 				</section>
 				<section>
 					<h3>Instrukcje warunkowe</h3>
-					<pre><code class="html"><div id="cond">
+					<pre><code class="html" data-trim><div id="cond">
 	<button @click="showMsg">Kliknij tutaj</button>
 	<div v-if="show"></div>
 </div>					</code></pre>
-					<pre><code class="vue">new Vue({
-	el: '#cond',
-    	data: {
-		message: 'Widać mnie?',
-		show: false
-		},
-        methods: {
-        showMsg: function () {
-        	this.show = !this.show;
-        }
+					<pre><code class="vue" data-trim>new Vue({
+  el: '#cond',
+    data: {
+	  message: 'Widać mnie?',
+	    show: false
+	  },
+    methods: {
+      showMsg: function () {
+        this.show = !this.show;
+      }
     }
 })					</code></pre>
 
@@ -242,19 +245,20 @@ new Vue({
 				</section>
 				<section>
 					<h3>Pętle</h3>
-					<pre><code class="html"><div id="loop">
-	<span v-for="option in options" @click="pickFood(option)"> {{ option }} </span>
+					<pre><code class="html" data-trim><div id="loop">
+	<span v-for="option in options"
+      @click="pickFood(option)"> {{ option }} </span>
 </div>					</code></pre>
-					<pre><code class="vue">new Vue({
-	el: '#loop',
-      data: {
-		  options: ['Pizza', 'Kebab', 'Sushi', 'Bibimbap']
-	  },
-      methods: {
-        pickFood: function (option) {
-          alert('Jemy: ' + option);
-	  }
+					<pre><code class="vue" data-trim>new Vue({
+  el: '#loop',
+  data: {
+    options: ['Pizza', 'Kebab', 'Sushi', 'Bibimbap']
+  },
+  methods: {
+    pickFood: function (option) {
+      alert('Jemy: ' + option);
     }
+  }
 })					</code></pre>
 
 					<div id="loop2">
@@ -341,7 +345,7 @@ new Vue({
                       Vue.component('resto', {
                         props: ['place'],
                         template: '<li>{{ place.text }}</li>'
-                      })
+                      });
 
                       new Vue({
                         el: '#components2',
@@ -463,8 +467,8 @@ Vue.set(br2.user2, 'passwd', '141592');</code></pre>
 									 this.admin.passwd = '000000'
 								 },
 								 startAgain: function() {
-									 this.user1.passwd = '141592'
-									 this.user2.passwd = '141592'
+									 this.user1.passwd = '141592';
+									 this.user2.passwd = '141592';
 									 this.admin.passwd = '141592'
 								 }
 							 }
@@ -517,21 +521,21 @@ correctBibimbap: function() {
 							 },
 						 	 methods: {
 								 addSushi: function() {
-									 this.hasSushi = true
+									 this.hasSushi = true;
 									 this.options.push({ name: 'suszi', from: 'Japan' })
 								 },
 								 correctSushi: function() {
 									 this.options[1].name = 'sushi'
 								 },
 								 maybeBibimbap: function() {
-									 this.hasBibimbap = true
+									 this.hasBibimbap = true;
 									 this.options[1] = { name: 'bimbap', from: 'Korea' }
 								 },
 								 correctBibimbap: function() {
 									 this.options[1].name = 'bibimbap'
 								 },
 								 readdBibimbap: function() {
-									 this.okBibim = true
+									 this.okBibim = true;
 									 Vue.set(this.options, 1, { name: 'bimbap', from: 'Korea' })
 								 }
 						 	 }
@@ -584,6 +588,7 @@ const app = new Vue({
     }
   }
 })					</code></pre>
+                    <a href="https://vuex.vuejs.org/">https://vuex.vuejs.org/</a>
 				</section>
 				<section>
 					<h3>Vue Devtools</h3>
@@ -597,7 +602,7 @@ const app = new Vue({
 						<li><a href="https://vuematerial.io/components/button/" target="_blank">Vue Material</a></li>
 						<li><a href="https://quasar-framework.org/">Quasar</a></li>
 						<li><a href="https://bootstrap-vue.js.org/" target="_blank">Bootstrap Vue</a></li>
-						<li><a href="https://blog.bitsrc.io/11-vue-js-component-libraries-you-should-know-in-2018-3d35ad0ae37f" target="_blank">I wiele więcej...fit</a></li>
+						<li><a href="https://blog.bitsrc.io/11-vue-js-component-libraries-you-should-know-in-2018-3d35ad0ae37f" target="_blank">I wiele więcej...</a></li>
 					</ul>
 				</section>
 				<section>
