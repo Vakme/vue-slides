@@ -502,6 +502,7 @@ correctBibimbap: function() {
 							 </li>
 						</ul>
 						<br/>
+						<button @click="reset">Reset</button>
 						<button @click="addSushi" v-if="!hasSushi">Co z sushi?</button>
 						<button @click="correctSushi" v-if="hasSushi && !hasBibimbap">Literówka...</button>
 						<button @click="maybeBibimbap" v-if="hasSushi && !hasBibimbap">Może jednak bibimbap?</button>
@@ -537,6 +538,12 @@ correctBibimbap: function() {
 								 readdBibimbap: function() {
 									 this.okBibim = true;
 									 Vue.set(this.options, 1, { name: 'bimbap', from: 'Korea' })
+								 },
+								 reset: function() {
+									 this.hasShushi = false;
+									 this.hasBibimbap = false;
+									 this.okBibim = false;
+									 this.options.splice(1);
 								 }
 						 	 }
 						})
