@@ -146,10 +146,10 @@ new Vue({
 					<h3>Wiązanie atrybutów</h3>
 					<pre><code class="html">
 <div id="bind">
- <a :href="link" target="_blank">To jest link</a>
+  <a :href="link" target="_blank">To jest link</a>
 </div>
 					</code></pre>
-					<pre><code class="vue" data-trim data-noescape>>
+					<pre><code class="vue" data-trim data-noescape>
 new Vue({
   el: '#bind',
   data: {
@@ -174,18 +174,18 @@ new Vue({
 				<section>
 					<h3>Wiązanie zdarzeń</h3>
 					<pre><code class="html" data-trim><div id="bind-events">
-	<button @click="showAlert">Kliknij tutaj</button>
+  <button @click="showAlert">Kliknij tutaj</button>
 </div>					</code></pre>
 					<pre><code class="vue" data-trim>new Vue({
   el: '#bind-events',
-    data: {
-	  message: 'To zostanie wyświetlone jako alert'
-	},
-    methods: {
-      showAlert: function () {
-        alert(this.message);
-      }
+  data: {
+    message: 'To zostanie wyświetlone jako alert'
+  },
+  methods: {
+    showAlert: function () {
+      alert(this.message);
     }
+  }
 })					</code></pre>
 
 					<div id="bind-events2">
@@ -208,20 +208,20 @@ new Vue({
 				<section>
 					<h3>Instrukcje warunkowe</h3>
 					<pre><code class="html" data-trim><div id="cond">
-	<button @click="showMsg">Kliknij tutaj</button>
-	<div v-if="show"></div>
+  <button @click="showMsg">Kliknij tutaj</button>
+  <div v-if="show"></div>
 </div>					</code></pre>
 					<pre><code class="vue" data-trim>new Vue({
   el: '#cond',
-    data: {
-	  message: 'Widać mnie?',
-	    show: false
-	  },
-    methods: {
-      showMsg: function () {
-        this.show = !this.show;
-      }
+  data: {
+  message: 'Widać mnie?',
+    show: false
+  },
+  methods: {
+    showMsg: function () {
+      this.show = !this.show;
     }
+  }
 })					</code></pre>
 
 					<div id="cond2">
@@ -502,6 +502,7 @@ correctBibimbap: function() {
 							 </li>
 						</ul>
 						<br/>
+						<button @click="reset">Reset</button>
 						<button @click="addSushi" v-if="!hasSushi">Co z sushi?</button>
 						<button @click="correctSushi" v-if="hasSushi && !hasBibimbap">Literówka...</button>
 						<button @click="maybeBibimbap" v-if="hasSushi && !hasBibimbap">Może jednak bibimbap?</button>
@@ -537,6 +538,12 @@ correctBibimbap: function() {
 								 readdBibimbap: function() {
 									 this.okBibim = true;
 									 Vue.set(this.options, 1, { name: 'bimbap', from: 'Korea' })
+								 },
+								 reset: function() {
+									 this.hasShushi = false;
+									 this.hasBibimbap = false;
+									 this.okBibim = false;
+									 this.options.splice(1);
 								 }
 						 	 }
 						})
